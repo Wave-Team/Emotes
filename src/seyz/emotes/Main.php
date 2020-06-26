@@ -23,7 +23,8 @@ class Main extends PluginBase implements Listener {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
     
-    public function onDataPacket(DataPacketReceiveEvent $ev){
+    public function onDataPacket(DataPacketReceiveEvent $ev): vous
+    {
         $pl = $ev->getPlayer();
         $pk = $ev->getPacket();
         
