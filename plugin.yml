@@ -1,0 +1,5 @@
+name: Emotes
+author: Seyz
+version: 1.0.0
+api: 3.0.0
+main: seyz\emotes\Main
