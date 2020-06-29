@@ -39,20 +39,7 @@ class Main extends PluginBase implements Listener {
     
     public function doEmote(Player $pl, string $emote): void
     {
-        $pk = new EmotePacket();
-        $class = new \ReflectionClass(EmotePacket::class);
-        
-        $entityRuntimeId = $class->getProperty("entityRuntimeId");
-        $entityRuntimeId->setAccessible(true);
-        $entityRuntimeId->setValue($pk, $pl->getId());
-        
-        $emoteId = $class->getProperty("emoteId");
-        $emoteId->setAccessible(true);
-        $emoteId->setValue($pk, $emote);
-        
-        $flags = $class->getProperty("flags");
-        $flags->setAccessible(true);
-        $flags->setValue($pk, 0 << 1);
+        $pk = EmotePacket::create($pl->getId(), $emote, 0 << 1);
         
         Server::getInstance()->broadcastPacket($pl->getViewers(), $pk);
     }
